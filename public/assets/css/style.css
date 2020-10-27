@@ -1,0 +1,13 @@
+.navbar {
+    background-color: pink;
+}
+
+.nav-link {
+    width: 115px;
+    height: 50px;
+    margin: 10px;
+    background-color: grey;
+    border-color: grey;
+    border-radius: 10px;
+    text-align: center;
+}
