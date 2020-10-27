@@ -1,13 +1,17 @@
 .navbar {
-    background-color: pink;
+    background-color: black;
 }
 
 .nav-link {
     width: 115px;
     height: 50px;
     margin: 10px;
-    background-color: grey;
+    background-color: #8b0000;
     border-color: grey;
     border-radius: 10px;
     text-align: center;
+}
+
+.navbar-light .navbar-toggler {
+    color: #8b0000;
 }
