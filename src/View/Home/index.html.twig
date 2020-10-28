@@ -1,9 +1,40 @@
 {% extends 'layout.html.twig' %}
 
+ {% block title %}
+     Tous les projets
+ {% endblock %}
+
 {% block content %}
-    {% include 'Component/_navbar.html.twig' %}
-    {% include 'Component/_footer.html.twig' %}
+    <section class="favorite">
+        <h1 class="title-section sticky-top">Favoris</h1>
+        <div class="container-fluide">
+            <div class="row">
+                {%  for project in projects %}
+                    {%  for picture in pictures %}
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                            <div class="card-location">
+                                <div class="card">
+                                    <img src="/assets/images/{{picture.name}}" class="card-img-top" alt="img1">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ project.title }}</h5>
+                                        <p class="card-text">{{ project.description }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {%  endfor %}
+                {%  endfor %}
+            </div>
+        </div>
+    <section class="projet3">
+        <h1 class="title-section sticky-top">Projet 3</h1>
+    </section>
 
+    <section class="projet2">
+        <h1 class="title-section sticky-top">Projet 2</h1>
+    </section>
 
-
+    <section class="projet1">
+        <h1 class="title-section sticky-top">Pojet 1</h1>
+    </section>
 {% endblock %}
