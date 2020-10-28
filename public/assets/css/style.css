@@ -1,3 +1,4 @@
+/*NAVBAR*/
 .navbar {
     background-color: black;
 }
@@ -15,6 +16,13 @@
 .navbar-light .navbar-toggler {
     color: #8b0000;
 }
+/*END NAVBAR*/
+
+body {
+    background-color: black;
+}
+
+
 /* FOOTER */
     .footer-dark {
         padding: 50px 0;
@@ -117,3 +125,36 @@
     }
 /* END FOOTER */
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*HOME */
+.title-section{
+    text-align: center;
+    padding: 10px;
+    background-color: rgba(245,245,245,0.7);
+}
+
+.card-location{
+    margin : 10px;
+}
+/* END HOME*/
