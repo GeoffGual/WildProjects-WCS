@@ -1,5 +1,12 @@
+body {
+    background: linear-gradient(white, #144758, white);
+    font-family: Montserrat, sans-serif;
+}
+
+/*NAVBAR*/
+
 .navbar {
-    background-color: black;
+    background-color: #144758;
 }
 
 .nav-link {
@@ -11,10 +18,50 @@
     border-radius: 10px;
     text-align: center;
 }
-
 .navbar-light .navbar-toggler {
     color: #8b0000;
 }
+/*END NAVBAR*/
+
+/*HOME */
+.title-section{
+    text-align: center;
+    padding: 10px;
+    background-color: rgba(245,245,245,0.7);
+}
+
+.card-location{
+    margin : 10px;
+}
+/* END HOME*/
+
+/*cards start*/
+.card {
+    padding: 20px 20px 0 20px;
+    text-align: left;
+    margin-bottom: 0;
+    filter: drop-shadow(7px 7px 4px #9B9898);
+}
+h3 {
+    font-size: 15pt;
+}
+.promo-star {
+    display: flex;
+    justify-content: space-between;
+}
+.promo {
+    margin-bottom: 0;
+}
+.card-img-top {
+    border: black .5px solid;
+
+}
+.card:hover {
+    transform: scale(1.20);
+    box-shadow: 0 0 40px -10px rgba(0, 0, 0, 0.25);
+}
+/*fin cards*/
+
 /* FOOTER */
     .footer-dark {
         padding: 50px 0;
@@ -128,4 +175,3 @@
         filter: none
     }
 /* END FOOTER */
-
