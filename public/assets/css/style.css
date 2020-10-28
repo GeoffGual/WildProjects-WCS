@@ -1,9 +1,9 @@
 body {
     background: linear-gradient(white, #144758, white);
     font-family: Montserrat, sans-serif;
-
 }
-/*navbar*/
+
+/*NAVBAR*/
 
 .navbar {
     background-color: #144758;
@@ -21,7 +21,19 @@ body {
 .navbar-light .navbar-toggler {
     color: #8b0000;
 }
-/*fin navbar*/
+/*END NAVBAR*/
+
+/*HOME */
+.title-section{
+    text-align: center;
+    padding: 10px;
+    background-color: rgba(245,245,245,0.7);
+}
+
+.card-location{
+    margin : 10px;
+}
+/* END HOME*/
 
 /*cards start*/
 .card {
@@ -151,5 +163,3 @@ h3 {
         filter: none
     }
 /* END FOOTER */
-
-
