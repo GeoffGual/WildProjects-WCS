@@ -13,6 +13,9 @@ use App\Model\ProjectManager;
 
 class HomeController extends AbstractController
 {
+    const PROJECT_TYPE_1 = '1';
+    const PROJECT_TYPE_2 = '2';
+    const PROJECT_TYPE_3 = '3';
 
     /**
      * Display home page
@@ -25,9 +28,9 @@ class HomeController extends AbstractController
     public function index()
     {
         $projectManager = new ProjectManager();
-        $projects1 = $projectManager->selectMainPictureProject1();
-        $projects2 = $projectManager->selectMainPictureProject2();
-        $projects3 = $projectManager->selectMainPictureProject3();
+        $projects1 = $projectManager->selectMainPictureProjectByType(self::PROJECT_TYPE_1);
+        $projects2 = $projectManager->selectMainPictureProjectByType(self::PROJECT_TYPE_2);
+        $projects3 = $projectManager->selectMainPictureProjectByType(self::PROJECT_TYPE_3);
         $projectsFavorite = $projectManager->selectMainPictureProjectFavorite();
         return $this->twig->render('Home/index.html.twig', [
             'projects1' => $projects1,
