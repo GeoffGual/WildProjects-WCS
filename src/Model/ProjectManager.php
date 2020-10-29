@@ -41,7 +41,7 @@ class ProjectManager extends AbstractManager
     public function selectMainPictureProjectFavorite()
     {
         $statement = $this->pdo->query("SELECT * FROM $this->table JOIN " . self::TABLEPICTURE .
-            " ON project.id=picture.project_id WHERE is_main=1 AND is_favorite=1");
+            " ON project.id=picture.project_id WHERE is_main=1 AND is_favorite");
         return $statement->fetchAll();
     }
 }
