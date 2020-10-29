@@ -5,8 +5,10 @@
  {% endblock %}
 
 {% block content %}
+    <div class="space"></div>
     <section class="favorite" id="favorite">
-        <h1 class="title-section sticky-top">Favoris</h1>
+        <h1 class="title-section">Favoris</h1>
+            <hr>
         <div class="container-fluide">
             <div class="row">
                 {%  for project in projectsFavorite %}
@@ -18,8 +20,9 @@
                 {%  endfor %}
             </div>
         </div>
-    <section class="projet3" id="projet3">
-        <h1 class="title-section sticky-top">Projet 3</h1>
+    <section class="title-section" id="projet3">
+        <h1 class="title-section">Projet 3</h1>
+        <hr>
         <div class="container-fluide">
             <div class="row">
                 {%  for project in projects3 %}
@@ -33,9 +36,10 @@
         </div>
     </section>
 
-    <section class="projet2" id="projet2">
-        <h1 class="title-section sticky-top">Projet 2</h1>
-        <div class="container-fluide">
+    <section class="title-section" id="projet2">
+        <h1 class="title-section">Projet 2</h1>
+        <hr>
+               <div class="container-fluide">
             <div class="row">
                 {%  for project in projects2 %}
                     <div class="col-lg-4 col-md-6 col-sm-12">
@@ -47,8 +51,10 @@
             </div>
         </div>
     </section>
-    <section class="projet1">
-        <h1 class="title-section sticky-top">Projet 1</h1>
+
+    <section class="title-section" id="projet1">
+        <h1 class="title-section">Projet 1</h1>
+        <hr>
         <div class="container-fluide">
             <div class="row">
                 {%  for project in projects1 %}
