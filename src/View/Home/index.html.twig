@@ -6,40 +6,65 @@
 
 {% block content %}
     <div class="space"></div>
-    <section class="favorite">
+    <section class="favorite" id="favorite">
         <h1 class="title-section">Favoris</h1>
-    <hr>
+            <hr>
         <div class="container-fluide">
             <div class="row">
-                {%  for project in projects %}
-                    {%  for picture in pictures %}
+                {%  for project in projectsFavorite %}
                         <div class="col-lg-4 col-md-6 col-sm-12">
                             <div class="card-location">
-                                <div class="card">
-                                    <img src="/assets/images/{{picture.name}}" class="card-img-top" alt="img1">
-                                    <div class="card-body">
-                                        <h5 class="card-title">{{ project.title }}</h5>
-                                        <p class="card-text">{{ project.description }}</p>
-                                    </div>
-                                </div>
+                                {% include 'Component/_cards.html.twig' %}
                             </div>
                         </div>
-                    {%  endfor %}
                 {%  endfor %}
             </div>
         </div>
-    <section class="title-section">
+    <section class="title-section" id="projet3">
         <h1 class="title-section">Projet 3</h1>
         <hr>
+        <div class="container-fluide">
+            <div class="row">
+                {%  for project in projects3 %}
+                    <div class="col-lg-4 col-md-6 col-sm-12">
+                        <div class="card-location">
+                            {% include 'Component/_cards.html.twig' %}
+                        </div>
+                    </div>
+                {%  endfor %}
+            </div>
+        </div>
     </section>
 
-    <section class="title-section">
+    <section class="title-section" id="projet2">
         <h1 class="title-section">Projet 2</h1>
         <hr>
+               <div class="container-fluide">
+            <div class="row">
+                {%  for project in projects2 %}
+                    <div class="col-lg-4 col-md-6 col-sm-12">
+                        <div class="card-location">
+                            {% include 'Component/_cards.html.twig' %}
+                        </div>
+                    </div>
+                {%  endfor %}
+            </div>
+        </div>
     </section>
 
-    <section class="title-section">
+    <section class="title-section" id="projet1">
         <h1 class="title-section">Projet 1</h1>
         <hr>
+        <div class="container-fluide">
+            <div class="row">
+                {%  for project in projects1 %}
+                    <div class="col-lg-4 col-md-6 col-sm-12">
+                        <div class="card-location">
+                            {% include 'Component/_cards.html.twig' %}
+                        </div>
+                    </div>
+                {%  endfor %}
+            </div>
+        </div>
     </section>
 {% endblock %}
