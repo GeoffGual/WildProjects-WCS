@@ -24,12 +24,19 @@ class ProjectManager extends AbstractManager
         return $statement->fetchAll();
     }
 
-
-
     public function selectMainPictureProjectFavorite()
     {
         $statement = $this->pdo->query("SELECT * FROM $this->table JOIN " . self::TABLEPICTURE .
             " ON project.id=picture.project_id WHERE is_main=1 AND is_favorite");
         return $statement->fetchAll();
+    }
+
+    public function selectTitleProjectByIdProject(int $id)
+    {
+        $statement = $this->pdo->prepare("SELECT title FROM $this->table WHERE id=:id");
+        $statement->bindValue('id', $id, \PDO::PARAM_INT);
+        $statement->execute();
+
+        return $statement->fetch();
     }
 }
