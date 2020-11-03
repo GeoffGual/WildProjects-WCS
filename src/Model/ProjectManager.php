@@ -31,9 +31,12 @@ class ProjectManager extends AbstractManager
         return $statement->fetchAll();
     }
 
-    public function selectTitleProjectByIdProject(int $id)
+    public function selectInfoProjectByIdProject(int $id)
     {
-        $statement = $this->pdo->prepare("SELECT title FROM $this->table WHERE id=:id");
+        $statement = $this->pdo->prepare("SELECT project.id, project.title, project.description, project.promo, project.type_of_project, project.is_favorite, language.name
+        FROM $this->table
+        JOIN language ON language.id = project.language_id
+        WHERE project.id=:id");
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
 
