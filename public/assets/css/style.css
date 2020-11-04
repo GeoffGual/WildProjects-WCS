@@ -8,6 +8,9 @@ body {
     --black: #000000;
 }
 
+.sr-only {
+    background-color: red;
+}
 /*NAVBAR*/
 .space{
     margin-top: 120px;
@@ -130,10 +133,14 @@ h3 {
         background: var(--red-color);
         border: var(--red-color);
     }
-.btn-add:hover {
+    .btn-add:hover {
     background: var(--red-color);
     border: 3px solid var(--font-color-white);
-}
+    }
+    .form-error {
+        text-align: center;
+        color: var(--red-color);
+    }
 /*END FORM*/
 
 /* FOOTER */

@@ -1,38 +1,38 @@
 <div class="form-container">
-<form action="NewProject/add/" method="post" class="form">
+<form action="add" method="post" class="form">
     <div class="form-group">
-        <label for="title">Titre du Projet</label>
-        <input type="text" name="title" class="form-control" id="title" placeholder="The Super Project">
+        <label for="title">Titre du Projet *</label>
+        <input type="text" name="title" class="form-control" id="title" placeholder="The Super Project" value="{{ project.title }}">
     </div>
     <div class="form-group">
-        <label for="type">Type de Projet</label>
+        <label for="type">Type de Projet *</label>
         <select class="form-control" name="type-of-project" id="type">
-            <option value="1">Projet 1</option>
-            <option value="2">Projet 2</option>
-            <option value="3">Projet 3</option>
+            <option value="0">Sélectionner...</option>
+            <option value="1" {{ (project.type_of_project == 1) ? 'selected' : '' }}>Projet 1</option>
+            <option value="2" {{ (project.type_of_project == 2) ? 'selected' : '' }}>Projet 2</option>
+            <option value="3" {{ (project.type_of_project == 3) ? 'selected' : '' }}>Projet 3</option>
         </select>
     </div>
     <div class="form-group">
-        <label for="langage">Langage</label>
+        <label for="langage">Langage *</label>
         <select class="form-control" name="language" id="langage" >
+            <option value="0">Sélectionner...</option>
             {% for language in languages %}
-            <option value="{{ language.id }}">{{ language.name }}</option>
+            <option value="{{ language.id }}" {{ (project.language_id == language.id) ? 'selected' : '' }}>{{ language.name }}</option>
             {% endfor %}
         </select>
     </div>
     <div class="form-group">
-        <label for="promo">Promo</label>
-        <input type="text" name="promo" class="form-control" id="promo" placeholder="MM/AAAA">
+        <label for="promo">Promo *</label>
+        <input type="text" name="promo" class="form-control" id="promo" placeholder="MM/AAAA" value="{{ project.promo }}">
     </div>
     <div class="form-group">
-        <label for="description">Description du Projet</label>
-        <textarea class="form-control" name="description" id="description" rows="3"></textarea>
+        <label for="description">Description du Projet *</label>
+        <textarea class="form-control" name="description" id="description" rows="3">{{ project.description }}</textarea>
     </div>
     <div class="form-check">
-        <input type="checkbox" class="form-check-input" name="isFavorite" value="1" id="isFavorite">
-        <label class="form-check-label" for="isFavorite">
-            C'est un favoris
-        </label>
+        <input type="checkbox" class="form-check-input" name="isFavorite" id="isFavorite" {{ (project.is_favorite == 1) ? 'checked' : '' }} >
+        <label class="form-check-label" for="isFavorite"><i class="fas fa-star star" title="Favoris"></i></label>
     </div>
     <button type="submit" class="btn btn-primary btn-add">Ajouter</button>
 </form>

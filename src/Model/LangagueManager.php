@@ -15,9 +15,4 @@ class LangagueManager extends AbstractManager
     {
         parent::__construct(self::TABLE);
     }
-
-    public function selectAll(): array
-    {
-        return $this->pdo->query('SELECT * FROM ' . $this->table)->fetchAll();
-    }
 }
