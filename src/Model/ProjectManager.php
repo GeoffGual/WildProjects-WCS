@@ -33,7 +33,8 @@ class ProjectManager extends AbstractManager
 
     public function selectInfoProjectByIdProject(int $id)
     {
-        $statement = $this->pdo->prepare("SELECT project.id, project.title, project.description, project.promo, project.type_of_project, project.is_favorite, language.name
+        $statement = $this->pdo->prepare("SELECT project.id, project.title, project.description, 
+        project.promo, project.type_of_project, project.is_favorite, language.name
         FROM $this->table
         JOIN language ON language.id = project.language_id
         WHERE project.id=:id");
@@ -41,5 +42,23 @@ class ProjectManager extends AbstractManager
         $statement->execute();
 
         return $statement->fetch();
+    }
+
+    public function insert(array $project): int
+    {
+        // prepared request
+        $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE .
+            " (`title`, `description`, `promo`, `type_of_project`, `language_id`, `is_favorite` ) 
+            VALUES (:title, :description, :promo, :type_of_project, :language_id, :is_favorite)");
+        $statement->bindValue('title', $project['title'], \PDO::PARAM_STR);
+        $statement->bindValue('description', $project['description'], \PDO::PARAM_STR);
+        $statement->bindValue('promo', $project['promo'], \PDO::PARAM_STR);
+        $statement->bindValue('type_of_project', $project['type_of_project'], \PDO::PARAM_INT);
+        $statement->bindValue('language_id', $project['language_id'], \PDO::PARAM_INT);
+        $statement->bindValue('is_favorite', $project['is_favorite'], \PDO::PARAM_BOOL);
+
+        if ($statement->execute()) {
+            return (int)$this->pdo->lastInsertId();
+        }
     }
 }
