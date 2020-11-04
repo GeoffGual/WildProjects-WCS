@@ -1,6 +1,7 @@
-body {
+body{
     background: var(--black);
     font-family: 'Righteous', cursive;
+    padding-top: 120px;
 }
 :root{
     --font-color-white: #ffffff;
@@ -12,9 +13,8 @@ body {
     background-color: red;
 }
 /*NAVBAR*/
-.space{
-    margin-top: 120px;
-}
+
+
 .navbar {
     display: flex;
     background-color: var(--black);
@@ -70,6 +70,7 @@ a:not(.btn) {
     text-align: center;
     padding: 10px;
     color: var(--font-color-white);
+    padding:60px 10px 10px 10px;
 }
 hr {
     width: 60px;
@@ -96,6 +97,7 @@ hr {
 }
 h3 {
     font-size: 15pt;
+    color: #9B9898;
 }
 .promo-star {
     display: flex;
@@ -103,6 +105,7 @@ h3 {
 }
 .promo {
     margin-bottom: 0;
+    color: black;
 }
 .card-img-top {
     border: black .5px solid;
@@ -134,14 +137,51 @@ h3 {
         border: var(--red-color);
     }
     .btn-add:hover {
-    background: var(--red-color);
-    border: 3px solid var(--font-color-white);
+        background: var(--red-color);
+        border: 3px solid var(--font-color-white);
     }
     .form-error {
         text-align: center;
         color: var(--red-color);
     }
 /*END FORM*/
+/*carousel*/
+    .title-project{
+        font-size: 3em;
+        color: gainsboro;
+        text-align: center;
+        padding-top: 40px;
+        margin-bottom: 50px;
+    }
+    .carousel-inner {
+        display: flex;
+        justify-content: center;
+    }
+    .carousel-control-prev-icon {
+        margin-left: -20px;
+    }
+    .carousel-control-next{
+
+    }
+    .description {
+        text-align: justify;
+        margin: 10px 200px 100px 200px;
+        color: gainsboro;
+    }
+    h4 {
+        text-align: left;
+        margin: 10px 0 10px 200px;
+        color: gainsboro;
+    }
+    .name-promo {
+        display: flex;
+        justify-content: space-between;
+        margin: 50px 200px 50px 200px;
+        font-size: 1.5em;
+        color: gainsboro;
+    }
+
+ /*end carousel/
 
 /* FOOTER */
     .footer-dark {

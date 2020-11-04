@@ -33,8 +33,8 @@ class ProjectManager extends AbstractManager
 
     public function selectInfoProjectByIdProject(int $id)
     {
-        $statement = $this->pdo->prepare("SELECT project.id, project.title, project.description, 
-        project.promo, project.type_of_project, project.is_favorite, language.name
+        $statement = $this->pdo->prepare("SELECT project.id, project.title, project.description, project.promo,
+        project.type_of_project, project.is_favorite, language.name
         FROM $this->table
         JOIN language ON language.id = project.language_id
         WHERE project.id=:id");

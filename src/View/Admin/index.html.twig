@@ -1,0 +1,19 @@
+{% extends 'layout.html.twig' %}
+
+ {% block title %}
+     Gestionnaire Admin
+ {% endblock %}
+
+{% block content %}
+
+    <h1>Projects</h1>
+    <ul>
+        {% for project in projects %}
+            <li><a href="/admin/show/{{ project.id }}"> {{ project.title }}</a></li>
+        {% else %}
+            <li>Nothing to display</li>
+        {% endfor %}
+    </ul>
+    <a href="/item/add">Ajouter</a>
+
+{% endblock %}
