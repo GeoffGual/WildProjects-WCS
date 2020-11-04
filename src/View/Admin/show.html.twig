@@ -1,0 +1,24 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+
+    <h1>Projet : {{ project.title }}</h1>
+    <li>Promotion : {{ project.promo }}</li>
+    <li>Descritpion : {{ project.description }}</li>
+    <li>Type de Projet : {{ project.type_of_project }}</li>
+    <li>
+        Favoris :
+        {%if project.is_favorite == 1 %}
+            Oui
+        {% else %}
+            Non
+        {% endif %}
+    </li>
+    <li>Language : {{ language.name }}</li>
+    <img src="/assets/images/{{ picture.name }}">
+    *
+    <a href="/admin/edit/{{ item.id }}">Edit</a>
+    <a href="/admin/delete/{{item.id}}">Supprimer</a>
+    <a href="/admin/index">Back</a>
+
+{% endblock %}
