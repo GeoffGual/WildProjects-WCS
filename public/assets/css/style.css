@@ -1,7 +1,7 @@
-body {
+body{
     background: var(--black);
     font-family: 'Righteous', cursive;
-    /*font-family: 'Varela Round', sans-serif;*/
+    padding-top: 120px;
 }
 :root{
     --font-color-white: #ffffff;
@@ -10,9 +10,8 @@ body {
 }
 
 /*NAVBAR*/
-.space{
-    margin-top: 120px;
-}
+
+
 .navbar {
     display: flex;
     background-color: var(--black);
