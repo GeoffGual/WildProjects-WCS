@@ -8,7 +8,6 @@ use App\Model\AdminManager;
 use App\Model\ItemManager;
 
 class AdminController extends AbstractController
-
 {
     public function index()
     {
