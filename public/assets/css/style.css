@@ -55,7 +55,6 @@ a:not(.btn) {
 }
 .nav-item-addprojet, .nav-link-addProject {
     display: none;
-}
 
 .navbar-light .navbar-toggler {
     color: #8b0000;
