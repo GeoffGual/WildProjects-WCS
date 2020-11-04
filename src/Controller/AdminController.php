@@ -40,4 +40,13 @@ class AdminController extends AbstractController
             'picture' => $picture,
         ]);
     }
+    /**
+     * @param int $id
+     */
+    public function delete(int $id)
+    {
+        $adminManager = new AdminManager();
+        $adminManager->delete($id);
+        header('Location:/admin/index');
+    }
 }
