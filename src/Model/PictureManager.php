@@ -16,10 +16,12 @@ class PictureManager extends AbstractManager
         parent::__construct(self::TABLE);
     }
 
-    public function selectAllByIdPoject(int $idProject)
+    public function selectNamePictureById(int $id)
     {
-        $statement = $this->pdo->prepare("SELECT * FROM $this->table WHERE project_id=:idProject");
-        $statement->bindValue('idProject', $idProject, \PDO::PARAM_INT);
+        $statement = $this->pdo->prepare("SELECT name, is_main
+        FROM $this->table
+        WHERE project_id = :id");
+        $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
 
         return $statement->fetchAll();

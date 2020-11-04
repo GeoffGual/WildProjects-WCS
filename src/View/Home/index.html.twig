@@ -8,7 +8,7 @@
     <section class="favorite" id="favorite">
         <h1 class="title-section">Favoris</h1>
             <hr>
-        <div class="container-fluide">
+        <div class="container-fluid">
             <div class="row">
                 {%  for project in projectsFavorite %}
                         <div class="col-lg-4 col-md-6 col-sm-12">
@@ -22,15 +22,15 @@
     <section class="title-section" id="projet3">
         <h1 class="title-section">Projet 3</h1>
         <hr>
-        <div class="container-fluide">
+        <div class="container-fluid">
             <div class="row">
-                {%  for project in projects3 %}
+                {% for project in projects3 %}
                     <div class="col-lg-4 col-md-6 col-sm-12">
                         <div class="card-location">
                             {% include 'Component/_cards.html.twig' %}
                         </div>
                     </div>
-                {%  endfor %}
+                {% endfor %}
             </div>
         </div>
     </section>
@@ -38,15 +38,15 @@
     <section class="title-section" id="projet2">
         <h1 class="title-section">Projet 2</h1>
         <hr>
-               <div class="container-fluide">
+        <div class="container-fluid">
             <div class="row">
-                {%  for project in projects2 %}
+                {% for project in projects2 %}
                     <div class="col-lg-4 col-md-6 col-sm-12">
                         <div class="card-location">
                             {% include 'Component/_cards.html.twig' %}
                         </div>
                     </div>
-                {%  endfor %}
+                {% endfor %}
             </div>
         </div>
     </section>
@@ -54,15 +54,15 @@
     <section class="title-section" id="projet1">
         <h1 class="title-section">Projet 1</h1>
         <hr>
-        <div class="container-fluide">
+        <div class="container-fluid">
             <div class="row">
-                {%  for project in projects1 %}
+                {% for project in projects1 %}
                     <div class="col-lg-4 col-md-6 col-sm-12">
                         <div class="card-location">
                             {% include 'Component/_cards.html.twig' %}
                         </div>
                     </div>
-                {%  endfor %}
+                {% endfor %}
             </div>
         </div>
     </section>

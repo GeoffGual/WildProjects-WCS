@@ -6,7 +6,7 @@ namespace App\Controller;
 
 class NewProjectController extends AbstractController
 {
-    public function newProject()
+    public function add()
     {
         return $this->twig->render('Home/newProject.html.twig');
     }

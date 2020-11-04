@@ -5,7 +5,7 @@ body{
 }
 :root{
     --font-color-white: #ffffff;
-    --red-color : rgb(179,49,24);
+    --red-color : rgb(179, 49, 24);
     --black: #000000;
 }
 
@@ -109,7 +109,32 @@ h3 {
     transform: scale(1.05);
     box-shadow: 0 0 40px -10px rgba(0, 0, 0, 0.25);
 }
+.star {
+    color: #f3ca4f;
+    font-size: 26px;
+}
 /*fin cards*/
+
+/*FORM*/
+    .form {
+        color: var(--font-color-white);
+    }
+    .form-container {
+        width : 40%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .btn-add {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        background: var(--red-color);
+        border: var(--red-color);
+    }
+.btn-add:hover {
+    background: var(--red-color);
+    border: 3px solid var(--font-color-white);
+}
+/*END FORM*/
 
 /* FOOTER */
     .footer-dark {

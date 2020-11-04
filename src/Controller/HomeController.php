@@ -37,6 +37,7 @@ class HomeController extends AbstractController
             'projects2' => $projects2,
             'projects3' => $projects3,
             'projectsFavorite' => $projectsFavorite,
+
         ]);
     }
 }
