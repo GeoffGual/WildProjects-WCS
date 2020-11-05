@@ -9,6 +9,9 @@ body{
     --black: #000000;
 }
 
+.sr-only {
+    background-color: red;
+}
 /*NAVBAR*/
 
 
@@ -136,6 +139,10 @@ h3 {
     .btn-add:hover {
         background: var(--red-color);
         border: 3px solid var(--font-color-white);
+    }
+    .form-error {
+        text-align: center;
+        color: var(--red-color);
     }
 /*END FORM*/
 /*carousel*/

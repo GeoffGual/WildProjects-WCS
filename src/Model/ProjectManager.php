@@ -43,4 +43,39 @@ class ProjectManager extends AbstractManager
 
         return $statement->fetch();
     }
+
+    public function insert(array $project): int
+    {
+        // prepared request
+        $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE .
+            " (`title`, `description`, `promo`, `type_of_project`, `language_id`, `is_favorite` ) 
+            VALUES (:title, :description, :promo, :type_of_project, :language_id, :is_favorite)");
+        $statement->bindValue('title', $project['title'], \PDO::PARAM_STR);
+        $statement->bindValue('description', $project['description'], \PDO::PARAM_STR);
+        $statement->bindValue('promo', $project['promo'], \PDO::PARAM_STR);
+        $statement->bindValue('type_of_project', $project['type_of_project'], \PDO::PARAM_INT);
+        $statement->bindValue('language_id', $project['language_id'], \PDO::PARAM_INT);
+        $statement->bindValue('is_favorite', $project['is_favorite'], \PDO::PARAM_BOOL);
+
+        if ($statement->execute()) {
+            return (int)$this->pdo->lastInsertId();
+        }
+    }
+    public function update(array $project): bool
+    {
+        // prepared request
+        $statement = $this->pdo->prepare("UPDATE " . self::TABLE .
+            " SET `title` = :title, `description` = :description, `promo` = :promo,
+            `type_of_project` =  :type_of_project, `language_id` = :language_id, `is_favorite` = :is_favorite 
+            WHERE `id` = :id");
+        $statement->bindValue('id', $project['id'], \PDO::PARAM_INT);
+        $statement->bindValue('title', $project['title'], \PDO::PARAM_STR);
+        $statement->bindValue('description', $project['description'], \PDO::PARAM_STR);
+        $statement->bindValue('promo', $project['promo'], \PDO::PARAM_STR);
+        $statement->bindValue('type_of_project', $project['type_of_project'], \PDO::PARAM_INT);
+        $statement->bindValue('language_id', $project['language_id'], \PDO::PARAM_INT);
+        $statement->bindValue('is_favorite', $project['is_favorite'], \PDO::PARAM_BOOL);
+
+        return $statement->execute();
+    }
 }

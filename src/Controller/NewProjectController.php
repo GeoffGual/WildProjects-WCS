@@ -4,10 +4,17 @@
 namespace App\Controller;
 
 
+use App\Model\LangagueManager;
+use App\Model\ProjectManager;
+
 class NewProjectController extends AbstractController
 {
-    public function add()
+    public function form()
     {
-        return $this->twig->render('Home/newProject.html.twig');
+        $languageManager = new LangagueManager();
+        $languages = $languageManager->selectAll();
+        return $this->twig->render('Home/newProject.html.twig', [
+            'languages' => $languages
+        ]);
     }
 }
