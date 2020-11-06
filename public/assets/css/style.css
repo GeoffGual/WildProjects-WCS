@@ -2,7 +2,9 @@ body{
     background: var(--black);
     font-family: 'Righteous', cursive;
     padding-top: 120px;
+    color: whitesmoke;
 }
+
 :root{
     --font-color-white: #ffffff;
     --red-color : rgb(179, 49, 24);
