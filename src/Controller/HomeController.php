@@ -28,19 +28,22 @@ class HomeController extends AbstractController
      */
     public function index()
     {
-        $verify = new SearchExist();
-        $verify->verify();
-        $projectManager = new ProjectManager();
-        $projects1 = $projectManager->selectMainPictureProjectByType(self::PROJECT_TYPE_1);
-        $projects2 = $projectManager->selectMainPictureProjectByType(self::PROJECT_TYPE_2);
-        $projects3 = $projectManager->selectMainPictureProjectByType(self::PROJECT_TYPE_3);
-        $projectsFavorite = $projectManager->selectMainPictureProjectFavorite();
-        return $this->twig->render('Home/index.html.twig', [
-            'projects1' => $projects1,
-            'projects2' => $projects2,
-            'projects3' => $projects3,
-            'projectsFavorite' => $projectsFavorite,
+            $search = new SearchExist();
+            $search->verify();
+            $word = $search->verify();
+            $projectManager = new ProjectManager();
+            $projectSearch = $projectManager->selectByWordKey($word);
+            var_dump($projectSearch);
+            $projects1 = $projectManager->selectMainPictureProjectByType(self::PROJECT_TYPE_1);
+            $projects2 = $projectManager->selectMainPictureProjectByType(self::PROJECT_TYPE_2);
+            $projects3 = $projectManager->selectMainPictureProjectByType(self::PROJECT_TYPE_3);
+            $projectsFavorite = $projectManager->selectMainPictureProjectFavorite();
+            return $this->twig->render('Home/index.html.twig', [
+                'projects1' => $projects1,
+                'projects2' => $projects2,
+                'projects3' => $projects3,
+                'projectsFavorite' => $projectsFavorite,
 
-        ]);
+            ]);
     }
 }

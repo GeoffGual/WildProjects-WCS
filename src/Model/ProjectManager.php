@@ -61,6 +61,7 @@ class ProjectManager extends AbstractManager
             return (int)$this->pdo->lastInsertId();
         }
     }
+
     public function update(array $project): bool
     {
         // prepared request
@@ -77,5 +78,17 @@ class ProjectManager extends AbstractManager
         $statement->bindValue('is_favorite', $project['is_favorite'], \PDO::PARAM_BOOL);
 
         return $statement->execute();
+    }
+
+    public function selectByWordKey($word): array
+    {
+        $word = '%' . $word . '%';
+        $statement = $this->pdo->prepare("SELECT project.id, project.title, project.description
+        FROM $this->table
+        WHERE project.title LIKE :word ");
+        $statement->bindValue('word', $word, \PDO::PARAM_STR);
+        $statement->execute();
+
+        return $statement->fetchAll();
     }
 }
