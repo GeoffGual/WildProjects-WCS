@@ -10,6 +10,7 @@ namespace App\Controller;
 
 use App\Model\PictureManager;
 use App\Model\ProjectManager;
+use App\Service\SearchExist;
 
 class HomeController extends AbstractController
 {
@@ -27,6 +28,8 @@ class HomeController extends AbstractController
      */
     public function index()
     {
+        $verify = new SearchExist();
+        $verify->verify();
         $projectManager = new ProjectManager();
         $projects1 = $projectManager->selectMainPictureProjectByType(self::PROJECT_TYPE_1);
         $projects2 = $projectManager->selectMainPictureProjectByType(self::PROJECT_TYPE_2);
