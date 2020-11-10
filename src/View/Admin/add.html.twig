@@ -6,8 +6,5 @@
 
 {% block content %}
     <h1>Ajouter un nouveau projet</h1>
-    {% for error in errors %}
-        <p class="form-error">{{ error }}</p>
-    {% endfor %}
     {% include 'Component/_form.html.twig' %}
 {% endblock %}

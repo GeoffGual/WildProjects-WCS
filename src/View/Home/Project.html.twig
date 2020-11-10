@@ -14,7 +14,7 @@
                     <div class="col-9">
 
                         {% for picture in pictures %}
-                        <div {% if picture.is_main == '1' %} class="carousel-item active" {% else %} class="carousel-item" {% endif %}>
+                        <div {% if picture.is_main == 1 %} class="carousel-item active" {% else %} class="carousel-item" {% endif %}>
                                 <img src="/assets/images/{{ picture.name }}" class="d-block w-100 "
                                      alt="{{ picture.name }}">
                         </div>
