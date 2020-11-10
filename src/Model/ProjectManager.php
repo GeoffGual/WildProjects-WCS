@@ -19,14 +19,14 @@ class ProjectManager extends AbstractManager
 
     public function selectMainPictureProjectByType(string $projectType)
     {
-        $statement = $this->pdo->query("SELECT * FROM $this->table JOIN " . self::TABLEPICTURE .
+        $statement = $this->pdo->query("SELECT * FROM $this->table JOIN " . PictureManager::TABLE .
             " ON project.id=picture.project_id WHERE is_main=1 AND type_of_project=$projectType");
         return $statement->fetchAll();
     }
 
     public function selectMainPictureProjectFavorite()
     {
-        $statement = $this->pdo->query("SELECT * FROM $this->table JOIN " . self::TABLEPICTURE .
+        $statement = $this->pdo->query("SELECT * FROM $this->table JOIN " . PictureManager::TABLE .
             " ON project.id=picture.project_id WHERE is_main=1 AND is_favorite");
         return $statement->fetchAll();
     }
