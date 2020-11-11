@@ -28,11 +28,7 @@ class HomeController extends AbstractController
      */
     public function index()
     {
-            $search = new SearchExist();
-            $search->verify();
-            $word = $search->verify();
             $projectManager = new ProjectManager();
-            $projectSearch = $projectManager->selectByWordKey($word);
             $projects1 = $projectManager->selectMainPictureProjectByType(self::PROJECT_TYPE_1);
             $projects2 = $projectManager->selectMainPictureProjectByType(self::PROJECT_TYPE_2);
             $projects3 = $projectManager->selectMainPictureProjectByType(self::PROJECT_TYPE_3);

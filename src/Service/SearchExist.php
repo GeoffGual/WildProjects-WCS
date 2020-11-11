@@ -10,7 +10,11 @@ class SearchExist
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $word = $_POST['search'];
-            return $word;
+            preg_match("/([^A-Za-z0-9\s])/",$word,$result);
+            if(empty($result)){
+                return $word;
+            }
+            header('Location: /');
         }
     }
 }
