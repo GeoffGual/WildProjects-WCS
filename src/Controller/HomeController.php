@@ -33,7 +33,6 @@ class HomeController extends AbstractController
             $word = $search->verify();
             $projectManager = new ProjectManager();
             $projectSearch = $projectManager->selectByWordKey($word);
-            var_dump($projectSearch);
             $projects1 = $projectManager->selectMainPictureProjectByType(self::PROJECT_TYPE_1);
             $projects2 = $projectManager->selectMainPictureProjectByType(self::PROJECT_TYPE_2);
             $projects3 = $projectManager->selectMainPictureProjectByType(self::PROJECT_TYPE_3);
