@@ -84,7 +84,7 @@ class ProjectManager extends AbstractManager
     {
         $word = '%' . $word . '%';
         $statement = $this->pdo->prepare("SELECT project.id, project.title, project.description
-        FROM $this->table
+        FROM " . self::TABLE . "
         WHERE project.title LIKE :word
         OR project.description LIKE :word");
         $statement->bindValue('word', $word, \PDO::PARAM_STR);
