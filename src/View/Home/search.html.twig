@@ -1,0 +1,16 @@
+{% extends 'layout.html.twig' %}
+
+ {% block title %}
+     {{ project.title }}
+ {% endblock %}
+
+{% block content %}
+    <h1>Projets trouvés: {{ projectsFound|length }}</h1>
+    <ul>
+        {% for project in projectsFound %}
+            <li><a href="/admin/show/{{ project.id }}"> {{ project.title }} </a> <p> {{ project.description }} </p></li>
+        {% else %}
+            <li>Nothing to display</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
