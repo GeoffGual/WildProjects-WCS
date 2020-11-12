@@ -2,37 +2,67 @@
 <form action="" method="post" class="form">
     <div class="form-group">
         <label for="title">Titre du Projet *</label>
-        <input type="text" name="title" class="form-control" id="title" placeholder="The Super Project" value="{{ project.title }}">
+        <input type="text" name="title" class="form-control {{ errors.title ? 'is-invalid' : '' }}" id="title" placeholder="The Super Project" value="{{ project.title }}">
+        {% if errors.title %}
+            <div class="invalid-feedback">
+                {{ errors.title }}
+            </div>
+        {% endif %}
     </div>
     <div class="form-group">
         <label for="type">Type de Projet *</label>
-        <select class="form-control" name="type-of-project" id="type">
+        <select class="form-control {{ errors.type_of_project ? 'is-invalid' : '' }}" name="type_of_project" id="type">
             <option value="0">Sélectionner...</option>
             <option value="1" {{ (project.type_of_project == 1) ? 'selected' : '' }}>Projet 1</option>
             <option value="2" {{ (project.type_of_project == 2) ? 'selected' : '' }}>Projet 2</option>
             <option value="3" {{ (project.type_of_project == 3) ? 'selected' : '' }}>Projet 3</option>
         </select>
+        {% if errors.type_of_project%}
+            <div class="invalid-feedback">
+               {{ errors.type_of_project }}
+            </div>
+        {% endif %}
     </div>
     <div class="form-group">
         <label for="langage">Langage *</label>
-        <select class="form-control" name="language" id="langage" >
+        <select class="form-control {{ errors.language ? 'is-invalid' : '' }}" name="language" id="langage" >
             <option value="0">Sélectionner...</option>
             {% for language in languages %}
             <option value="{{ language.id }}" {{ (project.language_id == language.id) ? 'selected' : '' }}>{{ language.name }}</option>
             {% endfor %}
         </select>
+        {% if errors.language %}
+            <div class="invalid-feedback">
+                {{ errors.language }}
+            </div>
+        {% endif %}
     </div>
     <div class="form-group">
         <label for="promo">Promo *</label>
-        <input type="text" name="promo" class="form-control" id="promo" placeholder="MM/AAAA" value="{{ project.promo }}">
+        <input type="text" name="promo" class="form-control {{ errors.promo ? 'is-invalid' : '' }}" id="promo" placeholder="MM/AAAA" value="{{ project.promo }}">
+        {% if errors.promo %}
+            <div class="invalid-feedback">
+                {{ errors.promo }}
+            </div>
+        {% endif %}
     </div>
     <div class="form-group">
         <label for="description">Description du Projet *</label>
-        <textarea class="form-control" name="description" id="description" rows="3">{{ project.description }}</textarea>
+        <textarea class="form-control {{ errors.description ? 'is-invalid' : '' }}" name="description" id="description" rows="3">{{ project.description }}</textarea>
+        {% if errors.description %}
+            <div class="invalid-feedback">
+                {{ errors.description }}
+            </div>
+        {% endif %}
     </div>
     <div class="form-check">
         <input type="checkbox" class="form-check-input" name="isFavorite" id="isFavorite" {{ (project.is_favorite == 1) ? 'checked' : '' }} >
         <label class="form-check-label" for="isFavorite"><i class="fas fa-star star" title="Favoris"></i></label>
+        {% if errors.isFavorite %}
+            <div class="invalid-feedback">
+                {{ errors.isFavorite }}
+            </div>
+        {% endif %}
     </div>
     <button type="submit" class="btn btn-primary btn-add">Ajouter</button>
 </form>
