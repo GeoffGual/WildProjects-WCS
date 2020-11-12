@@ -20,11 +20,11 @@
                 <a class="nav-link" href="/#projet1">Projet 1</a>
             </li>
             <li class="nav-item active">
+            {% if session.login %}
                 <a class="nav-link" href="/admin/index">Admin</a>
+            {% endif %}
             </li>
-            <li class="nav-item-addProject">
-                <a class="nav-link-addProject" href="#" tabindex="-1" aria-disabled="true">Projet +</a>
-            </li>
+
         </ul>
         <div class="navbar-search">
             <form class="form-inline my-2 my-lg-0" method="post" action="/Search/show">
@@ -32,12 +32,14 @@
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
             <ul class="navbar-nav mr-auto">
-
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Connexion</a>
+                    {% if session.login %}
+                        <a class="nav-link" href="../log/logout">Déconnexion</a>
+                    {% else %}
+                        <a class="nav-link" href="../log/login">Connexion</a>
+                    {% endif %}
                 </li>
             </ul>
         </div>
-
     </div>
 </nav>
