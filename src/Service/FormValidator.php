@@ -52,7 +52,7 @@ class FormValidator
     {
         foreach ($this->fields as $fieldType => $value) {
             if ($fieldType !== 'isFavorite' && empty($value)) {
-                    $this->addErrors($fieldType, 'Ce champs doit être rempli');
+                    $this->addErrors($fieldType, 'Ce champ doit être rempli');
             }
         }
     }

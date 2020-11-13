@@ -146,6 +146,16 @@ h3 {
         color: var(--red-color);
     }
 /*END FORM*/
+
+/*START Login*/
+
+.login{
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+/*END Login*/
+
 /*carousel*/
     .title-project{
         font-size: 3em;
