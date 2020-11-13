@@ -16,10 +16,10 @@ class ProjectValidator extends FormValidator
 
     public function checkPromo()
     {
-        $regex = '/([0-1][0-9])\/([2][0][0-9]{2})/';
+        $regex = '/([0-1][0-9])\/([0-9]{4})/';
         $promo = $this->fields['promo'];
         if (preg_match($regex, $promo) === 0) {
-            $this->errors['promo'] = 'Le format n\'est pas le bon, merci d\'entrer une date de type MM/AA';
+            $this->errors['promo'] = 'Le format n\'est pas le bon, merci d\'entrer une date de type MM/AAAA';
         }
     }
 
