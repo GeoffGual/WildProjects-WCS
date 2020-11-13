@@ -57,12 +57,12 @@
                 {{ project.description }}
             </div>
         </div>
-        {#{% if app.session %}#}
+        {% if session.login %}
             <div class="button-option">
                 <div><a class="button-link btn" href="/admin/edit/{{ project.id }}">Edit</a></div>
                 <div><a class="button-link btn" href="javascript:if(confirm('&Ecirc;tes-vous sûr de vouloir supprimer ?')) document.location.href='/admin/delete/{{project.id}}'">Supprimer</a></div>
                 <div><a class="button-link btn" href="/admin/index">Back</a></div>
             </div>
-        {#{% endif %}#}
+        {% endif %}
     </div>
 {% endblock %}
