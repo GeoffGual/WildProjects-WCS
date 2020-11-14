@@ -29,9 +29,8 @@ class LogController extends AbstractController
                 $formValidator->addErrors('password', 'Nom d\'utilisateur ou mot de passe incorrect ');
             }
 
-            $formValidator->checkField();
+            $formValidator->checkFields();
             $errorsMessages = $formValidator->getErrors();
-
         }
         return $this->twig->render('Admin/login.html.twig', [
             'errors' => $errorsMessages,
