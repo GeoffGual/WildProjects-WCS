@@ -11,14 +11,24 @@ class SearchController extends AbstractController
 {
     public function show()
     {
-        $search = new SearchExist();
-        $search->verify();
-        $word = $search->verify();
-        $projectManager = new ProjectManager();
-        $projectsFound = $projectManager->selectByWordKey($word);
-        return $this->twig->render('Home/search.html.twig', [
-            'projectsFound' => $projectsFound,
-            'word' => $word,
-        ]);
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if ($_POST['search'] == '') {
+                header('Location: /');
+            } else {
+                $words = $_POST['search'];
+                preg_match("/([^A-Za-z0-9\s])/", $words, $result);
+                if (empty($result)) {
+                    /*$words = explode(" ", $words);*/
+                    $projectManager = new ProjectManager();
+                    $projectsFound = $projectManager->selectByWordKey($words);
+                    return $this->twig->render('Home/search.html.twig', [
+                        'projectsFound' => $projectsFound,
+                        'word' => $words,
+                    ]);
+                } else {
+                    header('Location: /');
+                }
+            }
+        }
     }
 }

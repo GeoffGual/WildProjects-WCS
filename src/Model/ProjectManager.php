@@ -82,16 +82,15 @@ class ProjectManager extends AbstractManager
 
     public function selectByWordKey($word): array
     {
-        $word = '%' . $word . '%';
         $statement = $this->pdo->prepare("SELECT project.id, project.title, project.description,
         picture.name, picture.is_main
         FROM " . self::TABLE . "
         JOIN picture
         ON picture.project_id = project.id
-        WHERE picture.is_main = '1'
+        WHERE picture.is_main = True
         AND (project.title LIKE :word
         OR project.description LIKE :word)");
-        $statement->bindValue('word', $word, \PDO::PARAM_STR);
+        $statement->bindValue(':word', '%' . $word . '%', \PDO::PARAM_STR);
         $statement->execute();
 
         return $statement->fetchAll();
