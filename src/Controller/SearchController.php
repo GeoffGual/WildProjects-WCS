@@ -29,6 +29,11 @@ class SearchController extends AbstractController
                     header('Location: /');
                 }
             }
+            $formValidator->checkField();
+            $errorsMessages = $formValidator->getErrors();
         }
+        return $this->twig->render('Admin/login.html.twig', [
+            'errors' => $errorsMessages,
+        ]);
     }
 }
