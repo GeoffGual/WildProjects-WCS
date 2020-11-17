@@ -64,6 +64,9 @@ a:not(.btn) {
 .navbar-light .navbar-toggler {
     color: #8b0000;
 }
+.invalid-feedback{
+    display: block;
+}
 /*END NAVBAR*/
 
 /*HOME */

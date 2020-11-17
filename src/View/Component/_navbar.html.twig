@@ -30,17 +30,12 @@
             <form class="form-inline my-2 my-lg-0" method="post" action="/Search/show">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" class="form-control
                        {{ errors.search ? 'is-invalid' : '' }}"
-                       class="form-control {{ errors.symbole ? 'is-invalid' : '' }}"
                        aria-label="Search" name="search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                {% if errors.search or errors.symbole%}
+                {% if errors.search %}
                     <div class="invalid-feedback">
+                        jkkgggg
                         {{ errors.search }}
-                    </div>
-                {% endif %}
-                {% if errors.symbole %}
-                    <div class="invalid-feedback">
-                        {{ errors.symbole }}
                     </div>
                 {% endif %}
             </form>

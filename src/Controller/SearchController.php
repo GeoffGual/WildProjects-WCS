@@ -15,33 +15,21 @@ class SearchController extends AbstractController
     {
         $errorMessages = [];
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            if ($_POST['search'] == '') {
+            $words = $_POST['search'];
+            if ($words === '') {
                 $formValidator = new ProjectValidator($_POST);
-                $formValidator->checkField();
+                $formValidator->checkFields();
                 $errorMessages = $formValidator->getErrors();
-                return $this->twig->render('Component/_navbar.html.twig', [
-                    'errors' => $errorMessages
-                ]);
+                $projectsFound = [];
             } else {
-                $words = $_POST['search'];
-                preg_match("/([^A-Za-z0-9\s])/", $words, $result);
-                if (empty($result)) {
-                    $projectManager = new ProjectManager();
-                    $projectsFound = $projectManager->selectByWordKey($words);
-                    return $this->twig->render('Home/search.html.twig', [
-                        'projectsFound' => $projectsFound,
-                        'word' => $words,
-                        'errors' => $errorMessages
-                    ]);
-                } else {
-                    $formValidator = new FormValidator($_POST);
-                    $formValidator->addErrors('symbole', 'Pas de symbole dans la recherche');
-                    $errorMessages = $formValidator->getErrors();
-                    return $this->twig->render('Component/_navbar.html.twig', [
-                        'errors' => $errorMessages
-                    ]);
-                }
+                $projectManager = new ProjectManager();
+                $projectsFound = $projectManager->selectByWordKey($words);
             }
+            return $this->twig->render('Home/search.html.twig', [
+                'projectsFound' => $projectsFound,
+                'word' => $words,
+                'errors' => $errorMessages
+            ]);
         }
     }
 }
