@@ -40,15 +40,13 @@
             <div>
                 Promo: {{ project.promo }}
             </div>
-            {#{% if app.session %}#}
                 <div>
                     {%  if project.is_favorite == 1%}
-                        <i class="fas fa-star star"></i>
+                        <i class="star fas fa-star" id="favorite" {% if session.login %} onclick="removeFavorite({{ project.id }})" data-projectid="{{ project.id }}" {%  endif %}></i>
                     {% else %}
-                        <i class="far fa-star"></i>
+                        <i class="far fa-star" id="favorite" {% if session.login %} onclick= "addFavorite({{ project.id }})" data-projectid="{{ project.id }}" {% endif %}></i>
                     {% endif %}
                 </div>
-            {#{% endif %}#}
         </div>
         <hr>
         <div class="description">

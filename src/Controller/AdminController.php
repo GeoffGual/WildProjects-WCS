@@ -132,4 +132,21 @@ class AdminController extends AbstractController
             'project' => $project
         ]);
     }
+
+    public function favorite()
+    {
+        $json = file_get_contents('php://input');
+        $jsonData = json_decode($json, true);
+        $projectId = $jsonData['project'];
+        $projectFavorite = $jsonData['favorite'];
+        $projectManager = new ProjectManager();
+        $projectManager->updateFavoriteByProjectId($jsonData);
+        $response = [
+            'status' => 'success',
+            'project' => $projectId,
+            'favorite_state' => $projectFavorite
+        ];
+
+        return json_encode($response);
+    }
 }

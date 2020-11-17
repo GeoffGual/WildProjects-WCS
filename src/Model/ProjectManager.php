@@ -7,7 +7,6 @@ namespace App\Model;
 class ProjectManager extends AbstractManager
 {
     const TABLE = 'project';
-    const TABLEPICTURE = 'picture';
 
     /**
      *  Initializes this class.
@@ -91,5 +90,17 @@ class ProjectManager extends AbstractManager
         $statement->execute();
 
         return $statement->fetchAll();
+    }
+
+    public function updateFavoriteByProjectId($jsonData)
+    {
+        $query = "UPDATE " . self::TABLE .
+            " SET `is_favorite` = :is_favorite
+            WHERE `id` = :id";
+        $statement = $this->pdo->prepare($query);
+        $statement->bindValue(':is_favorite', $jsonData['favorite'], \PDO::PARAM_BOOL);
+        $statement->bindValue(':id', $jsonData['project'], \PDO::PARAM_INT);
+
+        return $statement->execute();
     }
 }
