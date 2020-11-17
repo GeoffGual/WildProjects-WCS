@@ -9,6 +9,7 @@
     <ul>
         {% for project in projectsFound %}
             <li><a href="/admin/show/{{ project.id }}"> {{ project.title }} </a> <p> {{ project.description }} </p></li>
+            <img src="/assets/images/{{project.name}}" class="card-location" alt="image test">
         {% else %}
             <li>Nothing to display</li>
         {% endfor %}
