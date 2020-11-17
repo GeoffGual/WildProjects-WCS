@@ -183,6 +183,7 @@ h3 {
         width: 70%;
         margin-bottom: 50px;
         margin-top: 20px;
+
         color: gainsboro;
     }
 
@@ -233,6 +234,7 @@ END Edit Project
         padding: 50px 0;
         color: #f0f9ff;
         background-color: #282d32;
+        text-align: center;
     }
 
     .footer-dark h3 {
@@ -259,21 +261,24 @@ END Edit Project
     .footer-dark ul a:hover {
         opacity: 0.8;
     }
-
-    @media (max-width:767px) {
-        .footer-dark .item:not(.social) {
-            text-align: center;
-            padding-bottom: 20px;
-        }
+    .column{
+        display:flex;
+        justify-content: center;
     }
-
-    .footer-dark .item.text {
-        margin-bottom: 36px;
+    .icons-network{
+        margin-left: 25px;
+    }
+    .about-li{
+        margin-left: 120px;
     }
 
     @media (max-width:767px) {
         .footer-dark .item.text {
             margin-bottom: 0;
+        }
+        .footer-dark .item:not(.social) {
+            text-align: center;
+            padding-bottom: 20px;
         }
         .about{
             display: none;
@@ -288,7 +293,15 @@ END Edit Project
     .footer-dark .item.social {
         text-align: center;
     }
-
+    @media screen and (min-width: 575px) and (max-width: 767px) {
+        .about-li {
+            display: contents;
+        }
+        .row{
+            display: flex;
+            flex-direction: column;
+        }
+    }
     @media (max-width:991px) {
         .footer-dark .item.social {
             text-align: center;
