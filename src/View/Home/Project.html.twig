@@ -12,10 +12,10 @@
                 <div class="carousel-inner">
                     <div class="col-9">
                         {% for picture in pictures %}
-                        <div {% if picture.is_main == 1 %} class="carousel-item active" {% else %} class="carousel-item" {% endif %}>
+                            <div class="carousel-item {{ (picture.is_main == 1) ? ' active'}}">
                                 <img src="/assets/images/{{ picture.name }}" class="d-block w-100 "
                                      alt="{{ picture.name }}">
-                        </div>
+                            </div>
                         {% endfor %}
                     </div>
                 </div>
@@ -41,7 +41,9 @@
             </div>
         </div>
         <hr>
-        <h4>Description</h4>
+        <div class="carousel-h4">
+            <h4>Description</h4>
+        </div>
         <div class="description">
             {{ project.description }}
         </div>

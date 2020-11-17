@@ -180,7 +180,7 @@ h3 {
         margin: 10px 200px 100px 200px;
         color: gainsboro;
     }
-    h4 {
+    .carousel-h4 {
         text-align: left;
         margin: 10px 0 10px 200px;
         color: gainsboro;
@@ -200,6 +200,7 @@ h3 {
         padding: 50px 0;
         color: #f0f9ff;
         background-color: #282d32;
+        text-align: center;
     }
 
     .footer-dark h3 {
@@ -226,21 +227,24 @@ h3 {
     .footer-dark ul a:hover {
         opacity: 0.8;
     }
-
-    @media (max-width:767px) {
-        .footer-dark .item:not(.social) {
-            text-align: center;
-            padding-bottom: 20px;
-        }
+    .column{
+        display:flex;
+        justify-content: center;
     }
-
-    .footer-dark .item.text {
-        margin-bottom: 36px;
+    .icons-network{
+        margin-left: 25px;
+    }
+    .about-li{
+        margin-left: 120px;
     }
 
     @media (max-width:767px) {
         .footer-dark .item.text {
             margin-bottom: 0;
+        }
+        .footer-dark .item:not(.social) {
+            text-align: center;
+            padding-bottom: 20px;
         }
         .about{
             display: none;
@@ -255,7 +259,15 @@ h3 {
     .footer-dark .item.social {
         text-align: center;
     }
-
+    @media screen and (min-width: 575px) and (max-width: 767px) {
+        .about-li {
+            display: contents;
+        }
+        .row{
+            display: flex;
+            flex-direction: column;
+        }
+    }
     @media (max-width:991px) {
         .footer-dark .item.social {
             text-align: center;
