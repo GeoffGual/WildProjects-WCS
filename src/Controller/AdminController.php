@@ -15,13 +15,20 @@ use App\Service\ProjectValidator;
 
 class AdminController extends AbstractController
 {
+    const PROJECT_TYPE_1 = '1';
+    const PROJECT_TYPE_2 = '2';
+    const PROJECT_TYPE_3 = '3';
 
     public function index()
     {
         $adminManager = new AdminManager();
-        $titles = $adminManager->selectAllProject();
+        $projects1 = $adminManager->selectAllProjectByProjectType(self::PROJECT_TYPE_1);
+        $projects2 = $adminManager->selectAllProjectByProjectType(self::PROJECT_TYPE_2);
+        $projects3 = $adminManager->selectAllProjectByProjectType(self::PROJECT_TYPE_3);
         return $this->twig->render('Admin/index.html.twig', [
-            'projects' => $titles,
+            'projects1' => $projects1,
+            'projects2' => $projects2,
+            'projects3' => $projects3,
         ]);
     }
 

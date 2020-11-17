@@ -97,7 +97,7 @@ hr {
     padding: 20px 20px 0 20px;
     text-align: left;
     margin-bottom: 0;
-    filter: drop-shadow(7px 7px 4px #9B9898);
+    /*filter: drop-shadow(7px 7px 4px #9B9898);*/
 }
 h3 {
     font-size: 15pt;
@@ -227,6 +227,13 @@ Edit Project
 /*
 END Edit Project
  */
+/* START Admin */
+
+.admin_projects li{
+    list-style: none;
+}
+
+/* END Admin */
 
 
 /* FOOTER */

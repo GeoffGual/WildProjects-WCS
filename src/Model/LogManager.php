@@ -13,7 +13,7 @@ class LogManager extends AbstractManager
         parent::__construct(self::TABLE);
     }
 
-    public function checkmdp($login)
+    public function recoverPassword($login)
     {
         $statement = $this->pdo->prepare("SELECT password FROM " . self::TABLE . " WHERE `login` = :login");
         $statement->bindValue(':login', $login, \PDO::PARAM_STR);
