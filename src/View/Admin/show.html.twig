@@ -1,24 +1,52 @@
 {% extends 'layout.html.twig' %}
 
+{% block title %}
+    {{ project.title }}
+{% endblock %}
+
 {% block content %}
 
-    <h1>Projet : {{ project.title }}</h1>
-    <li>Promotion : {{ project.promo }}</li>
-    <li>Descritpion : {{ project.description }}</li>
-    <li>Type de Projet : {{ project.type_of_project }}</li>
-    <li>
-        Favoris :
-        {%if project.is_favorite == 1 %}
-            Oui
-        {% else %}
-            Non
-        {% endif %}
-    </li>
-    <li>Language : {{ language.name }}</li>
-    <img src="/assets/images/{{ picture.name }}">
-    *
-    <a href="/admin/edit/{{ project.id }}">Edit</a>
-    <a href="javascript:if(confirm('&Ecirc;tes-vous sûr de vouloir supprimer ?')) document.location.href='/admin/delete/{{project.id}}'">Supprimer</a>
-    <a href="/admin/index">Back</a>
+    <div class="title-project">
+        {{ project.title }}
+    </div>
+    <div class="container-button">
+        <div class="picture-project">
+            <img src="/assets/images/{{ picture.name }}">
+        </div>
+    </div>
+    <div>
+        <div class="name-promo">
+            <div>
+                Language : {{ project.name }}
+            </div>
+            <div>
+                Projet n°{{ project.type_of_project }}
+            </div>
+            <div>
+                Promo: {{ project.promo }}
+            </div>
+            <div>
+                {%  if project.is_favorite == 1%}
+                    <i class="fas fa-star star"></i>
+                    {% else %}
+                        <i class="far fa-star"></i>
+                {% endif %}
+            </div>
+        </div>
+        <hr>
+
+        <div class="description">
+            <h4>Description</h4>
+            <div >
+                {{ project.description }}
+            </div>
+        </div>
+        <div class="button-option">
+            <div><a class="button-link btn" href="/admin/edit/{{ project.id }}">Edit</a></div>
+            <div><a class="button-link btn" href="javascript:if(confirm('&Ecirc;tes-vous sûr de vouloir supprimer ?')) document.location.href='/admin/delete/{{project.id}}'">Supprimer</a></div>
+            <div><a class="button-link btn" href="/admin/index">Back</a></div>
+        </div>
+    </div>
+
 
 {% endblock %}

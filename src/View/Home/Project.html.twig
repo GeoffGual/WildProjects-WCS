@@ -28,6 +28,7 @@
                     <span class="sr-only">Next</span>
                 </a>
             </div>
+
     <div>
         <div class="name-promo">
             <div>
@@ -39,13 +40,27 @@
             <div>
                 Promo: {{ project.promo }}
             </div>
+                <div>
+                    {%  if project.is_favorite == 1%}
+                        <i class="star fas fa-star" id="favorite" {% if session.login %} onclick="removeFavorite({{ project.id }})" data-projectid="{{ project.id }}" {%  endif %}></i>
+                    {% else %}
+                        <i class="far fa-star" id="favorite" {% if session.login %} onclick= "addFavorite({{ project.id }})" data-projectid="{{ project.id }}" {% endif %}></i>
+                    {% endif %}
+                </div>
         </div>
         <hr>
-        <div class="carousel-h4">
-            <h4>Description</h4>
-        </div>
         <div class="description">
-            {{ project.description }}
+            <h4>Description</h4>
+            <div >
+                {{ project.description }}
+            </div>
         </div>
+        {% if session.login %}
+            <div class="button-option">
+                <div><a class="button-link btn" href="/admin/edit/{{ project.id }}">Edit</a></div>
+                <div><a class="button-link btn" href="javascript:if(confirm('&Ecirc;tes-vous sûr de vouloir supprimer ?')) document.location.href='/admin/delete/{{project.id}}'">Supprimer</a></div>
+                <div><a class="button-link btn" href="/admin/index">Back</a></div>
+            </div>
+        {% endif %}
     </div>
 {% endblock %}

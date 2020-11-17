@@ -6,6 +6,7 @@ namespace App\Controller;
 
 use App\Model\AdminManager;
 use App\Model\LangagueManager;
+use App\Model\PictureManager;
 use App\Model\ProjectManager;
 use App\Service\FormValidator;
 use App\Service\LogAccess;
@@ -35,15 +36,13 @@ class AdminController extends AbstractController
      */
     public function show(int $id)
     {
-        $adminManager = new AdminManager();
-        $project = $adminManager->selectOneById($id);
-        $language = $adminManager->selectLanguageNameById($id);
-        $picture = $adminManager->selectMainPictureProject($id);
-
-        return $this->twig->render('Admin/show.html.twig', [
+        $projectManager = new ProjectManager();
+        $pictureManager = new PictureManager();
+        $project = $projectManager->selectInfoProjectByIdProject($id);
+        $pictures = $pictureManager->selectNamePictureById($id);
+        return $this->twig->render('Home/Project.html.twig', [
             'project' => $project,
-            'language' => $language,
-            'picture' => $picture,
+            'pictures' => $pictures
         ]);
     }
     /**
@@ -132,5 +131,22 @@ class AdminController extends AbstractController
             'languages' => $languages,
             'project' => $project
         ]);
+    }
+
+    public function favorite()
+    {
+        $json = file_get_contents('php://input');
+        $jsonData = json_decode($json, true);
+        $projectId = $jsonData['project'];
+        $projectFavorite = $jsonData['favorite'];
+        $projectManager = new ProjectManager();
+        $projectManager->updateFavoriteByProjectId($jsonData);
+        $response = [
+            'status' => 'success',
+            'project' => $projectId,
+            'favorite_state' => $projectFavorite
+        ];
+
+        return json_encode($response);
     }
 }
