@@ -59,9 +59,9 @@
         </div>
         {% if session.login %}
             <div class="button-option">
-                <div><a class="button-link btn" href="/admin/edit/{{ project.id }}">Edit</a></div>
-                <div><a class="button-link btn" href="javascript:if(confirm('&Ecirc;tes-vous sûr de vouloir supprimer ?')) document.location.href='/admin/delete/{{project.id}}'">Supprimer</a></div>
-                <div><a class="button-link btn" href="/admin/index">Back</a></div>
+                <div><a class="button-link btn" href="/admin/edit/{{ project.id }}"><i class="fas fa-pen"></i> Edit</a></div>
+                <div><a class="button-link btn" href="javascript:if(confirm('&Ecirc;tes-vous sûr de vouloir supprimer ?')) document.location.href='/admin/delete/{{project.id}}'"><i class="far fa-trash-alt"></i> Supprimer</a></div>
+                <div><a class="button-link btn" href="/admin/index"><i class="fas fa-arrow-left"></i> Back</a></div>
             </div>
         {% endif %}
     </div>

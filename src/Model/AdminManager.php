@@ -18,9 +18,9 @@ class AdminManager extends AbstractManager
         parent::__construct(self::TABLE);
     }
 
-    public function selectAllProject()
+    public function selectAllProjectByProjectType($projectType)
     {
-        $statement = $this->pdo->prepare("SELECT * FROM $this->table");
+        $statement = $this->pdo->prepare("SELECT * FROM $this->table WHERE type_of_project= $projectType ORDER BY type_of_project DESC, title ASC");
         $statement->execute();
 
         return $statement->fetchAll();
