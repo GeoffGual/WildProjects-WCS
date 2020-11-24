@@ -67,6 +67,23 @@ a:not(.btn) {
 .invalid-feedback{
     display: block;
 }
+
+.btn-search{
+    color: var(--red-color);
+    border-color: var(--red-color);
+}
+
+.btn-search:hover{
+    color: var(--font-color-white);
+    border-color: var(--red-color);
+    background-color: var(--red-color);
+}
+
+.btn-search:active{
+    color: var(--font-color-white);
+    border-color: var(--red-color);
+    background-color: var(--red-color);
+}
 /*END NAVBAR*/
 
 /*HOME */
@@ -88,7 +105,7 @@ hr {
 }
 
 .card-location{
-    margin : 50px;
+    text-align: center;
 }
 /* END HOME*/
 
@@ -100,7 +117,7 @@ hr {
     /*filter: drop-shadow(7px 7px 4px #9B9898);*/
 }
 h3 {
-    font-size: 15pt;
+    font-size: 1.2rem;
     color: #9B9898;
 }
 .promo-star {
@@ -112,9 +129,11 @@ h3 {
     color: black;
 }
 .card-img-top {
-    border: black .5px solid;
-
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
 }
+
 .card:hover {
     transform: scale(1.05);
     box-shadow: 0 0 40px -10px rgba(0, 0, 0, 0.25);
@@ -199,10 +218,21 @@ h3 {
         color: gainsboro;
     }
 
- /*end carousel/
+ /*end carousel*/
 
- /*form
-  */
+/*start Search*/
+.search-list {
+    color: var(--red-color);
+    font-size: 1.5em;
+}
+
+.search-list:hover{
+    color: var(--red-color);
+    font-size: 1.5em;
+    text-decoration: underline;
+}
+
+/*end search*/
 
  /*
 Edit Project
@@ -233,6 +263,7 @@ Edit Project
 /*
 END Edit Project
  */
+
 /* START Admin */
 
 .admin_projects li{
@@ -382,3 +413,4 @@ END Edit Project
         filter: none
     }
 /* END FOOTER */
+
