@@ -6,35 +6,39 @@
 
 {% block content %}
     <h1>Projets</h1>
-
-    <h3> Projets 3 </h3>
-    <ul class="admin_projects">
-        {% for project in projects3  %}
-            <li><a href="/admin/show/{{ project.id }}"> {{ project.title }}</a></li>
-        {% else %}
-            <li>Nothing to display</li>
-        {% endfor %}
-    </ul>
-
-    <h3> Projets 2 </h3>
-    <ul class="admin_projects">
-        {% for project in projects2  %}
-            <li><a href="/admin/show/{{ project.id }}"> {{ project.title }}</a></li>
-        {% else %}
-            <li>Nothing to display</li>
-        {% endfor %}
-
-    </ul>
-
-    <h3> Projets 1 </h3>
-    <ul class="admin_projects">
-        {% for project in projects1  %}
-            <li><a href="/admin/show/{{ project.id }}"> {{ project.title }}</a></li>
-        {% else %}
-            <li>Nothing to display</li>
-        {% endfor %}
-
-    </ul>
     <a class="button-link btn" href="/admin/add"><i class="fas fa-folder-plus"></i> Ajouter</a>
+    <div class="container-listes-projets">
+        <div>
+            <h3> Projets 3 </h3>
+            <ul class="admin_projects">
+                {% for project in projects3 %}
+                    <li><a class="listeprojet" href="/admin/show/{{ project.id }}"> {{ project.title }}</a></li>
+                {% else %}
+                    <li>Nothing to display</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div>
+            <h3> Projets 2 </h3>
+            <ul class="admin_projects">
+                {% for project in projects2 %}
+                    <li><a class="listeprojet" href="/admin/show/{{ project.id }}"> {{ project.title }}</a></li>
+                {% else %}
+                    <li>Nothing to display</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div>
+            <h3> Projets 1 </h3>
+
+            <ul class="admin_projects">
+                {% for project in projects1 %}
+                    <li><a class="listeprojet" href="/admin/show/{{ project.id }}"> {{ project.title }}</a></li>
+                {% else %}
+                    <li>Nothing to display</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
 
 {% endblock %}
