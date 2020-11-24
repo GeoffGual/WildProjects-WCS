@@ -145,7 +145,10 @@ h3 {
         text-align: center;
         color: var(--red-color);
     }
-/*END FORM*/
+    .invalid-feedback {
+        display: block;
+    }
+        /*END FORM*/
 
 /*START Login*/
 
@@ -193,6 +196,9 @@ h3 {
     }
 
  /*end carousel/
+
+ /*form
+  */
 
  /*
 Edit Project

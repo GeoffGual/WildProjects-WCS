@@ -1,5 +1,5 @@
 <div class="form-container">
-<form action="" method="post" class="form">
+<form action="" method="post" class="form" enctype="multipart/form-data">
     <div class="form-group">
         <label for="title">Titre du Projet *</label>
         <input type="text" name="title" class="form-control {{ errors.title ? 'is-invalid' : '' }}" id="title" placeholder="The Super Project" value="{{ project.title }}">
@@ -55,6 +55,24 @@
             </div>
         {% endif %}
     </div>
+    <div class="form-group">
+        <label for="imageUpload">Téléchargement de l'image principale *</label>
+        <input type="file" name="image_main" id="imageUpload">
+        {% for errorMain in errorsUploadMain %}
+            <div class="invalid-feedback">
+                {{ errorMain }}
+            </div>
+        {% endfor %}
+    </div>
+    <div class="form-group">
+        <label for="imageUpload">Téléchargement des images *</label>
+        <input type="file" name="images[]" id="imageUpload" multiple>
+        {% for errorMultiple in errorsUploadMultiple%}
+            <div class="invalid-feedback">
+                {{ errorMultiple }}
+            </div>
+        {% endfor %}
+    </div>
     <div class="form-check">
         <input type="checkbox" class="form-check-input" name="isFavorite" id="isFavorite" {{ (project.is_favorite == 1) ? 'checked' : '' }} >
         <label class="form-check-label" for="isFavorite"><i class="fas fa-star star" title="Favoris"></i></label>
@@ -65,5 +83,5 @@
         {% endif %}
     </div>
     <button type="submit" class="btn btn-primary btn-add">Ajouter</button>
-</form>
+    </form>
 </div>
