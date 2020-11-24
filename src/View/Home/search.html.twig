@@ -8,8 +8,13 @@
     <h1>Projets trouvés: {{ projectsFound|length }}</h1>
     <ul>
         {% for project in projectsFound %}
-            <li><a href="/{{ session.login ? 'admin' : 'project'}}/show/{{ project.id }}"> {{ project.title }} </a> <p> {{ project.description }} </p></li>
-            <img src="/assets/images/{{project.name}}" class="card-location" alt="image test">
+            <li>
+                <a class="search-list" href="/{{ session.login ? 'admin' : 'project'}}/show/{{ project.id }}"> {{ project.title }}</a>
+                <p>{{ project.description }} </p>
+            </li>
+            <div class="card-location">
+                <img src="/assets/images/{{project.name}}"  alt="image test">
+            </div>
         {% else %}
             <li>Nothing to display</li>
         {% endfor %}
