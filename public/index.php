@@ -5,7 +5,7 @@
  * Date: 11/10/17
  * Time: 14:01
  */
-
+session_cache_limiter('private_no_expire, must-revalidate');
 session_start();
 require_once __DIR__ . '/../vendor/autoload.php';
 

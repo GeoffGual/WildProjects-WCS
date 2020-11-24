@@ -9,10 +9,12 @@
     <ul>
         {% for project in projectsFound %}
             <li>
-                <a class="search-list" href="/admin/show/{{ project.id }}"> {{ project.title }}</a>
-                <p> {{ project.description }}</p>
+                <a class="search-list" href="/{{ session.login ? 'admin' : 'project'}}/show/{{ project.id }}"> {{ project.title }}</a>
+                <p>{{ project.description }} </p>
             </li>
-            <div class="card-location"><img src="/assets/images/{{project.name}}"  alt="image test"></div>
+            <div class="card-location">
+                <img src="/assets/images/{{project.name}}"  alt="image test">
+            </div>
         {% else %}
             <li>Nothing to display</li>
         {% endfor %}
