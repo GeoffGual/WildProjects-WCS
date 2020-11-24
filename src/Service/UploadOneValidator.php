@@ -27,7 +27,7 @@ class UploadOneValidator
             $allowed = ['image/jpeg', 'image/png', 'image/gif'];
             if (!in_array($typeNameData, $allowed)) {
                 $this->errors['type'] = 'Seuls les fichiers, jpeg, png, gif sont acceptés';
-            } elseif ($fileSize > 1000000) {
+            } elseif ($fileSize > 2000000) {
                 $this->errors['size'] = 'fichier trop lourd';
             } else {
                 $extension = pathinfo($_FILES['image_main']['name'], PATHINFO_EXTENSION);

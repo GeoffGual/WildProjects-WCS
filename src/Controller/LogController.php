@@ -21,7 +21,9 @@ class LogController extends AbstractController
             $dataBasePassword = $logManager->recoverPassword($login);
             $postPassword =  $_POST['password'];
             $formValidator = new FormValidator($_POST);
-
+            if ($dataBasePassword === false) {
+                $dataBasePassword['password'] = "";
+            }
             if (password_verify($postPassword, $dataBasePassword['password'])) {
                 $_SESSION['login'] = $login;
                 header('location: /');
