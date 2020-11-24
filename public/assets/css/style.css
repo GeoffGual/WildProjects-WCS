@@ -113,7 +113,8 @@ hr {
 .card {
     padding: 20px 20px 0 20px;
     text-align: left;
-    margin-bottom: 0;
+    margin-bottom: 20px;
+    margin-top: 20px;
     /*filter: drop-shadow(7px 7px 4px #9B9898);*/
 }
 h3 {
