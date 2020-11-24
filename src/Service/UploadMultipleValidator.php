@@ -33,7 +33,7 @@ class UploadMultipleValidator
                 $this->errors['type'] = 'seuls les fichiers, jpeg, png, gif sont acceptés';
             } else {
                 $fileSize = $_FILES['images']['size'][$position];
-                if ($fileSize > 1000000) {
+                if ($fileSize > 2000000) {
                     $this->errors['size'] = 'fichier trop lourd';
                 } else {
                     $extension = pathinfo($_FILES['images']['name'][$position], PATHINFO_EXTENSION);
