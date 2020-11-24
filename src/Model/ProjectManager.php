@@ -7,7 +7,6 @@ namespace App\Model;
 class ProjectManager extends AbstractManager
 {
     const TABLE = 'project';
-    const TABLEPICTURE = 'picture';
 
     /**
      *  Initializes this class.
@@ -82,14 +81,29 @@ class ProjectManager extends AbstractManager
 
     public function selectByWordKey($word): array
     {
-        $word = '%' . $word . '%';
-        $statement = $this->pdo->prepare("SELECT project.id, project.title, project.description
+        $statement = $this->pdo->prepare("SELECT project.id, project.title, project.description,
+        picture.name, picture.is_main
         FROM " . self::TABLE . "
-        WHERE project.title LIKE :word
-        OR project.description LIKE :word");
-        $statement->bindValue('word', $word, \PDO::PARAM_STR);
+        JOIN picture
+        ON picture.project_id = project.id
+        WHERE picture.is_main = True
+        AND (project.title LIKE :word
+        OR project.description LIKE :word)");
+        $statement->bindValue(':word', '%' . $word . '%', \PDO::PARAM_STR);
         $statement->execute();
 
         return $statement->fetchAll();
+    }
+
+    public function updateFavoriteByProjectId($jsonData)
+    {
+        $query = "UPDATE " . self::TABLE .
+            " SET `is_favorite` = :is_favorite
+            WHERE `id` = :id";
+        $statement = $this->pdo->prepare($query);
+        $statement->bindValue(':is_favorite', $jsonData['favorite'], \PDO::PARAM_BOOL);
+        $statement->bindValue(':id', $jsonData['project'], \PDO::PARAM_INT);
+
+        return $statement->execute();
     }
 }

@@ -12,6 +12,20 @@ class FormValidator
         $this->fields = $fields;
     }
 
+    public function checkFields()
+    {
+        foreach ($this->fields as $fieldType => $value) {
+            if (empty($value)) {
+                $this->addErrors($fieldType, 'Ce champ doit être rempli');
+            }
+        }
+    }
+
+    public function addErrors($fieldType, $message)
+    {
+        $this->errors[$fieldType] = $message;
+    }
+
     /**
      * @return mixed
      */
@@ -46,19 +60,5 @@ class FormValidator
     {
         $this->errors = $errors;
         return $this;
-    }
-
-    public function checkField()
-    {
-        foreach ($this->fields as $fieldType => $value) {
-            if ($fieldType !== 'isFavorite' && empty($value)) {
-                    $this->addErrors($fieldType, 'Ce champ doit être rempli');
-            }
-        }
-    }
-
-    public function addErrors($fieldType, $message)
-    {
-        $this->errors[$fieldType] = $message;
     }
 }

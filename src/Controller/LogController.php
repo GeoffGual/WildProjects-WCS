@@ -18,20 +18,19 @@ class LogController extends AbstractController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $logManager = new LogManager();
             $login = $_POST['login'];
-            $logManager = $logManager->checkmdp($login);
-            $postPassword = ['password' => $_POST['password']] ;
+            $dataBasePassword = $logManager->recoverPassword($login);
+            $postPassword =  $_POST['password'];
             $formValidator = new FormValidator($_POST);
 
-            if ($logManager === $postPassword) {
+            if (password_verify($postPassword, $dataBasePassword['password'])) {
                 $_SESSION['login'] = $login;
                 header('location: /');
             } else {
                 $formValidator->addErrors('password', 'Nom d\'utilisateur ou mot de passe incorrect ');
             }
 
-            $formValidator->checkField();
+            $formValidator->checkFields();
             $errorsMessages = $formValidator->getErrors();
-
         }
         return $this->twig->render('Admin/login.html.twig', [
             'errors' => $errorsMessages,

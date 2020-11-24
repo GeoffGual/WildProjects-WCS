@@ -6,6 +6,14 @@ namespace App\Service;
 
 class ProjectValidator extends FormValidator
 {
+    public function checkFields()
+    {
+        foreach ($this->fields as $fieldType => $value) {
+            if ($fieldType !== 'isFavorite' && empty($value)) {
+                $this->addErrors($fieldType, 'Ce champ doit être rempli');
+            }
+        }
+    }
     public function checkDescription()
     {
         $description = $this->fields['description'];
@@ -25,7 +33,7 @@ class ProjectValidator extends FormValidator
 
     public function checkAll()
     {
-        $this->checkField();
+        $this->checkFields();
         $this->checkDescription();
         $this->checkPromo();
     }

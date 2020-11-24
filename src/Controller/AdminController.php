@@ -17,13 +17,20 @@ use App\Service\UploadOneValidator;
 
 class AdminController extends AbstractController
 {
+    const PROJECT_TYPE_1 = '1';
+    const PROJECT_TYPE_2 = '2';
+    const PROJECT_TYPE_3 = '3';
 
     public function index()
     {
         $adminManager = new AdminManager();
-        $titles = $adminManager->selectAllProject();
+        $projects1 = $adminManager->selectAllProjectByProjectType(self::PROJECT_TYPE_1);
+        $projects2 = $adminManager->selectAllProjectByProjectType(self::PROJECT_TYPE_2);
+        $projects3 = $adminManager->selectAllProjectByProjectType(self::PROJECT_TYPE_3);
         return $this->twig->render('Admin/index.html.twig', [
-            'projects' => $titles,
+            'projects1' => $projects1,
+            'projects2' => $projects2,
+            'projects3' => $projects3,
         ]);
     }
 
@@ -94,7 +101,7 @@ class AdminController extends AbstractController
             $filenames = $uploadMultipleValidator->uploadMultiple();
             $errorsUploadMultiple = $uploadMultipleValidator->getErrors();
             $pictures = [];
-            foreach($filenames as $filename) {
+            foreach ($filenames as $filename) {
                 $pictures[] = [
                     'name' => $filename,
                     'is_main' => 0,
@@ -104,7 +111,7 @@ class AdminController extends AbstractController
             $formValidator->checkAll();
             $errorMessages = $formValidator->getErrors();
 
-            if (empty($errorMessages) && empty($errorsUploadMain) && empty($errorsUploadMultiple)) {
+            if (empty($errorMessages)) {
                 $projectManager = new ProjectManager();
                 $projectManager->update($project);
                 header('Location: /Project/show/' . $id);
@@ -151,7 +158,7 @@ class AdminController extends AbstractController
             $filenames = $uploadMultipleValidator->uploadMultiple();
             $errorsUploadMultiple = $uploadMultipleValidator->getErrors();
             $pictures = [];
-            foreach($filenames as $filename) {
+            foreach ($filenames as $filename) {
                 $pictures[] = [
                     'name' => $filename,
                     'is_main' => 0,
@@ -167,12 +174,11 @@ class AdminController extends AbstractController
                 $pictureManager = new PictureManager();
                 $id = $projectManager->insert($project);
                 $pictureManager->insert($mainPicture, $id);
-                foreach($pictures as $picture) {
+                foreach ($pictures as $picture) {
                     $pictureManager->insert($picture, $id);
                 }
                 header('Location: /Project/show/' . $id);
             }
-
         }
         return $this->twig->render('Admin/add.html.twig', [
             'errors' => $errorMessages,
@@ -183,6 +189,20 @@ class AdminController extends AbstractController
         ]);
     }
 
+    public function favorite()
+    {
+        $json = file_get_contents('php://input');
+        $jsonData = json_decode($json, true);
+        $projectId = $jsonData['project'];
+        $projectFavorite = $jsonData['favorite'];
+        $projectManager = new ProjectManager();
+        $projectManager->updateFavoriteByProjectId($jsonData);
+        $response = [
+            'status' => 'success',
+            'project' => $projectId,
+            'favorite_state' => $projectFavorite
+        ];
 
-
+        return json_encode($response);
+    }
 }
