@@ -26,4 +26,16 @@ class PictureManager extends AbstractManager
 
         return $statement->fetchAll();
     }
+
+    public function insert($picture, $id): int
+    {
+        $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . " (name, is_main, project_id) 
+        VALUES (:name, :is_main, :project_id)");
+        $statement->bindValue(':name', $picture['name'], \PDO::PARAM_STR);
+        $statement->bindValue(':is_main', $picture['is_main'], \PDO::PARAM_BOOL);
+        $statement->bindValue(':project_id', $id, \PDO::PARAM_INT);
+        if ($statement->execute()) {
+            return (int)$this->pdo->lastInsertId();
+        }
+    }
 }

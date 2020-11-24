@@ -20,5 +20,4 @@ class LogManager extends AbstractManager
         $statement->execute();
         return $statement->fetch();
     }
-
 }
