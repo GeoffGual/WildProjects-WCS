@@ -239,6 +239,21 @@ END Edit Project
     list-style: none;
 }
 
+.admin_projects {
+    padding-left: 0;
+}
+
+.listeprojet:hover {
+    color: var(--red-color);
+}
+.listeprojet {
+    color: var(--font-color-white);
+}
+.container-listes-projets {
+    display: flex;
+    justify-content: space-around;
+}
+
 /* END Admin */
 
 

@@ -72,8 +72,6 @@ class AdminController extends AbstractController
         $projectManager = new ProjectManager();
         $project = $projectManager->selectOneById($id);
         $errorMessages = [];
-        $errorsUploadMain = [];
-        $errorsUploadMultiple = [];
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (empty($_POST['isFavorite'])) {
@@ -90,23 +88,7 @@ class AdminController extends AbstractController
                 'language_id' => intval($_POST['language']),
                 'is_favorite' => $_POST['isFavorite']
             ];
-            $uploadOneValidator = new UploadOneValidator($_FILES);
-            $filename = $uploadOneValidator->uploadOne();
-            $errorsUploadMain = $uploadOneValidator->getErrors();
-            $mainPicture = [
-                'name' => $filename,
-                'is_main' => 1,
-            ];
-            $uploadMultipleValidator = new UploadMultipleValidator($_FILES);
-            $filenames = $uploadMultipleValidator->uploadMultiple();
-            $errorsUploadMultiple = $uploadMultipleValidator->getErrors();
-            $pictures = [];
-            foreach ($filenames as $filename) {
-                $pictures[] = [
-                    'name' => $filename,
-                    'is_main' => 0,
-                ];
-            }
+
             $formValidator = new ProjectValidator($_POST);
             $formValidator->checkAll();
             $errorMessages = $formValidator->getErrors();
@@ -121,6 +103,7 @@ class AdminController extends AbstractController
             'errors' => $errorMessages,
             'languages' => $languages,
             'project' => $project,
+            'edit'=> true,
         ]);
     }
 
