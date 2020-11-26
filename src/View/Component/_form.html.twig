@@ -57,7 +57,7 @@
     </div>
     {% if edit != true %}
     <div class="form-group">
-        <label for="imageUpload">Téléchargement de l'image principale *</label>
+        <label for="imageUpload">Téléchargement de l'image principale (Max 1Mo) *</label><br>
         <input type="file" name="image_main" id="imageUpload">
         {% for errorMain in errorsUploadMain %}
             <div class="invalid-feedback">
@@ -66,8 +66,8 @@
         {% endfor %}
     </div>
     <div class="form-group">
-        <label for="imageUpload">Téléchargement des images *</label>
-        <input type="file" name="images[]" id="imageUpload" multiple>
+        <label for="imageUpload">Téléchargement des images (Max 1Mo) *</label><br>
+        <input class="test-input-upload" type="file" name="images[]" id="imageUpload" multiple>
         {% for errorMultiple in errorsUploadMultiple%}
             <div class="invalid-feedback">
                 {{ errorMultiple }}

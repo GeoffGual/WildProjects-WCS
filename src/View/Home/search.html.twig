@@ -5,18 +5,19 @@
  {% endblock %}
 
 {% block content %}
-    <h1>Projets trouvés: {{ projectsFound|length }}</h1>
-    <ul>
+    <h1 class="title-search">Projets trouvés: {{ projectsFound|length }}</h1>
+    <ul class="ul-search">
         {% for project in projectsFound %}
             <li>
                 <a class="search-list" href="/{{ session.login ? 'admin' : 'project'}}/show/{{ project.id }}"> {{ project.title }}</a>
                 <p>{{ project.description }} </p>
+                <div class="card-location">
+                    <img class="img-search" src="/assets/images/{{project.name}}"  alt="image test">
+                </div>
             </li>
-            <div class="card-location">
-                <img src="/assets/images/{{project.name}}"  alt="image test">
-            </div>
+
         {% else %}
-            <li>Nothing to display</li>
+            <li>Pas de résultat pour cette recherche</li>
         {% endfor %}
     </ul>
 {% endblock %}
